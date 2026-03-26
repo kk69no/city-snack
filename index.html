@@ -360,37 +360,6 @@ body{background:var(--bg);color:var(--text)}
 .food-card-tag.spicy{background:rgba(220,50,50,.12);color:#e55}
 .food-card-tag.veg{background:rgba(50,180,50,.12);color:#4c4}
 
-/* Shawarma text-based card */
-.shawarma-card{
-  background:var(--bg-card);border-radius:var(--radius);padding:1.2rem;
-  border:1px solid var(--border);transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
-  cursor:pointer;opacity:1;transform:translateY(0);
-}
-.shawarma-card.fade-in{opacity:0;transform:translateY(30px)}
-.shawarma-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
-.shawarma-card:hover{
-  transform:translateY(-3px);
-  border-color:rgba(249,117,21,0.2);
-  box-shadow:0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(249,117,21,0.1);
-}
-.shawarma-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.25rem}
-.shawarma-card-name{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:var(--text)}
-.shawarma-card-sub{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-bottom:.3rem}
-.shawarma-card-desc{font-size:.82rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.4}
-.shawarma-card-bottom{display:flex;justify-content:space-between;align-items:center}
-
-/* Shawarma previews */
-.shawarma-previews{display:flex;gap:.8rem;margin-bottom:1.2rem;overflow-x:auto;padding:.2rem 0}
-.shawarma-previews img{
-  height:120px;border-radius:var(--radius);object-fit:cover;cursor:pointer;
-  border:2px solid transparent;transition:border-color var(--transition);flex-shrink:0;
-}
-.shawarma-previews img:hover{border-color:rgba(249,117,21,0.5)}
-
-/* Shawarma grid */
-.shawarma-grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media(min-width:768px){.shawarma-grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1025px){.shawarma-grid{grid-template-columns:repeat(3,1fr)}}
 
 /* Addons section */
 .addons-section{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center}
@@ -734,21 +703,18 @@ const MENU_DATA = {
     title:'\u0428\u0430\u0443\u0440\u043C\u0430',
     icon:'\uD83C\uDF2F',
     locations:['ch','ki'],
-    type:'shawarma',
-    previewImages:['img/shawarma-1.jpg','img/shawarma-2.jpg','img/shawarma-3.jpg'],
     items:[
-      {name:'\u041A\u0438\u043D\u0433',price:265,weight:'360\u0433',rating:4.9,
+      {name:'\u041A\u0438\u043D\u0433',price:265,weight:'360\u0433',rating:4.9,img:'img/shawarma-1.jpg',
        desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
-      {name:'\u041F\u0430\u043F\u0430',price:345,weight:'510\u0433',rating:4.8,
+      {name:'\u041F\u0430\u043F\u0430',price:345,weight:'510\u0433',rating:4.8,img:'img/shawarma-2.jpg',
        desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
-      {name:'\u0421\u0430\u0431\u043E\u0440\u0431\u0443\u043B\u0438',price:275,weight:'390\u0433',rating:4.7,
-       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0414\u0443\u0448\u0438\u0441\u0442\u0430\u044F \u0437\u0435\u043B\u0435\u043D\u044C, \u041B\u0443\u043A \u0440\u0435\u043F\u0447\u0430\u0442\u044B\u0439, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0413\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0438\u0439 \u043E\u0441\u0442\u0440\u044B\u0439 \u0441\u043E\u0443\u0441',
-       sub:'\u043E\u0441\u0442\u0440\u0430\u044F \u0433\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0430\u044F \u0448\u0430\u0443\u0440\u043C\u0430',tags:['spicy']},
-      {name:'\u0414\u0436\u0443\u043D\u0438\u043E\u0440',price:220,weight:'280\u0433',rating:4.5,
+      {name:'\u0421\u0430\u0431\u043E\u0440\u0431\u0443\u043B\u0438',price:275,weight:'390\u0433',rating:4.7,img:'img/shawarma-3.jpg',
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0414\u0443\u0448\u0438\u0441\u0442\u0430\u044F \u0437\u0435\u043B\u0435\u043D\u044C, \u041B\u0443\u043A \u0440\u0435\u043F\u0447\u0430\u0442\u044B\u0439, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0413\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0438\u0439 \u043E\u0441\u0442\u0440\u044B\u0439 \u0441\u043E\u0443\u0441',tags:['spicy']},
+      {name:'\u0414\u0436\u0443\u043D\u0438\u043E\u0440',price:220,weight:'280\u0433',rating:4.5,img:'img/shawarma-2.jpg',
        desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
-      {name:'\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0430\u044F',price:165,weight:'245\u0433',rating:4.6,
+      {name:'\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0430\u044F',price:165,weight:'245\u0433',rating:4.6,img:'img/shawarma-3.jpg',
        desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:['veg']},
-      {name:'\u0411\u0438\u0444\u043E\u043D\u0430\u0442\u043E\u0440',price:265,weight:'350\u0433',rating:4.6,
+      {name:'\u0411\u0438\u0444\u043E\u043D\u0430\u0442\u043E\u0440',price:265,weight:'350\u0433',rating:4.6,img:'img/shawarma-1.jpg',
        desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0433\u043E\u0432\u044F\u0436\u044C\u044F, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]}
     ]
   },
@@ -941,7 +907,7 @@ function setView(view) {
     setTimeout(observeCards, 200);
     // Fallback: force show all cards if observer fails
     setTimeout(function(){
-      el.querySelectorAll('.food-card, .shawarma-card, .drink-card, .review-card').forEach(function(c){
+      el.querySelectorAll('.food-card, .drink-card, .review-card').forEach(function(c){
         c.classList.add('visible');
       });
     }, 600);
@@ -992,8 +958,6 @@ function renderMenu(loc) {
 
     if (section.type === 'addons') {
       html += renderAddons(section);
-    } else if (section.type === 'shawarma') {
-      html += renderShawarma(section, loc);
     } else {
       html += '<div class="card-grid" data-section="' + key + '">';
       section.items.forEach(function(item, i) {
@@ -1058,31 +1022,6 @@ function renderFoodCard(item, section, index, loc) {
     '</div></div>';
 }
 
-function renderShawarma(section, loc) {
-  var html = '<div class="shawarma-previews">';
-  section.previewImages.forEach(function(src){
-    html += '<img src="' + src + '" alt="\u0428\u0430\u0443\u0440\u043C\u0430" loading="lazy" onerror="this.style.display=\'none\'">';
-  });
-  html += '</div>';
-  html += '<div class="shawarma-grid" data-section="shawarma">';
-  section.items.forEach(function(item, i){
-    var tagsHtml = (item.tags||[]).map(function(t){
-      var cls = t === 'spicy' ? 'spicy' : 'veg';
-      var label = t === 'spicy' ? '\uD83C\uDF36 \u041E\u0441\u0442\u0440\u043E\u0435' : '\uD83E\uDD6C \u0412\u0435\u0433';
-      return '<span class="food-card-tag ' + cls + '">' + label + '</span>';
-    }).join('');
-
-    html += '<div class="shawarma-card" data-name="' + escapeAttr(item.name) + '" data-price="' + item.price + '" data-tags="' + (item.tags||[]).join(',') + '" data-section="shawarma" data-idx="' + i + '" data-loc="' + loc + '">' +
-      '<div class="shawarma-card-top"><span class="shawarma-card-name">' + item.name + '</span><span class="food-card-rating">\u2605 ' + item.rating + '</span></div>' +
-      (item.sub ? '<p class="shawarma-card-sub">' + item.sub + '</p>' : '') +
-      '<p class="shawarma-card-desc">' + item.desc + '</p>' +
-      (tagsHtml ? '<div class="food-card-tags">' + tagsHtml + '</div>' : '') +
-      '<div class="shawarma-card-bottom"><span class="food-card-weight">' + item.weight + '</span><span class="food-card-price">' + item.price + '\u20BD</span></div>' +
-    '</div>';
-  });
-  html += '</div>';
-  return html;
-}
 
 function renderAddons(section) {
   var html = '<div class="addons-section">';
@@ -1177,7 +1116,7 @@ function applyFilters(loc) {
   var query = currentSearch[loc];
   var filter = currentFilter[loc];
   var menu = document.getElementById('menu-' + loc);
-  var cards = menu.querySelectorAll('.food-card, .shawarma-card');
+  var cards = menu.querySelectorAll('.food-card');
 
   cards.forEach(function(card) {
     var name = (card.dataset.name || '').toLowerCase();
@@ -1195,7 +1134,7 @@ function applyFilters(loc) {
 
   // Price sorting
   if (filter === 'priceAsc' || filter === 'priceDesc') {
-    menu.querySelectorAll('.card-grid, .shawarma-grid').forEach(function(grid) {
+    menu.querySelectorAll('.card-grid').forEach(function(grid) {
       var items = Array.from(grid.children).filter(function(c){ return c.style.display !== 'none'; });
       items.sort(function(a, b) {
         var pa = parseInt(a.dataset.price) || 0;
@@ -1240,7 +1179,7 @@ function applyFilters(loc) {
       }
       return;
     }
-    var visible = sec.querySelectorAll('.food-card:not([style*="display: none"]), .shawarma-card:not([style*="display: none"])');
+    var visible = sec.querySelectorAll('.food-card:not([style*="display: none"])');
     sec.style.display = visible.length === 0 ? 'none' : '';
   });
 
@@ -1316,7 +1255,7 @@ function modalNav(dir) {
 
 // Card click delegation
 document.addEventListener('click', function(e) {
-  var card = e.target.closest('.food-card, .shawarma-card');
+  var card = e.target.closest('.food-card');
   if (!card) return;
   var section = card.dataset.section;
   var idx = parseInt(card.dataset.idx);
@@ -1354,7 +1293,7 @@ function observeCards() {
   if (cardObserver) cardObserver.disconnect();
   var activeView = document.querySelector('.view.active');
   if (!activeView) return;
-  var cards = activeView.querySelectorAll('.food-card, .shawarma-card, .drink-card, .review-card');
+  var cards = activeView.querySelectorAll('.food-card, .drink-card, .review-card');
   // Make cards above the fold visible immediately
   var viewportH = window.innerHeight;
   cards.forEach(function(card) {
