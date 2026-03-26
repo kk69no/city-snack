@@ -1,4 +1,4 @@
-const CACHE_NAME = 'city-snack-v4';
+const CACHE_NAME = 'city-snack-v5';
 const ASSETS = [
   './',
   './index.html',
