@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="СИТИ СНЭК — бургеры, шаурма, хот-доги, такос, гиро. Два адреса: ул. Чернышевского 167, ул. Кирова 2/2. Доставка и самовывоз.">
+<meta name="keywords" content="Сити Снэк, бургеры, шаурма, хот-доги, такос, гиро, фастфуд, доставка, Чернышевского, Кирова, меню">
+<meta name="theme-color" content="#0a0a0a">
+<!-- <meta name="yandex-verification" content="ВСТАВЬ_КОД_ВЕРИФИКАЦИИ"> -->
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="СИТИ СНЭК — Бургеры, Шаурма, Такос">
+<meta property="og:description" content="Фастфуд-ресторан с двумя точками. Бургеры, шаурма, хот-доги, такос, гиро. Премиальное качество по доступным ценам.">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:locale" content="ru_RU">
+<title>СИТИ СНЭК — Бургеры, Шаурма, Такос | Меню и Доставка</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden;transition:background-color .4s,color .4s;font-weight:400}
+
+/* ===== CSS VARIABLES ===== */
+:root{
+  --accent:#c8a55c;
+  --accent-hover:#dbb96e;
+  --accent-light:rgba(200,165,92,0.08);
+  --star:#c8a55c;
+  --radius:12px;
+  --shadow:0 8px 30px rgba(0,0,0,.2);
+  --transition:.3s cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"]{
+  --bg:#0c0c0c;
+  --bg-card:#181818;
+  --bg-header:rgba(12,12,12,0.92);
+  --bg-input:#1e1e1e;
+  --text:#f0ede8;
+  --text-secondary:#a09a93;
+  --text-muted:#7a756e;
+  --border:rgba(255,255,255,0.1);
+  --tag-bg:rgba(255,255,255,0.07);
+  --modal-bg:rgba(0,0,0,0.92);
+}
+[data-theme="light"]{
+  --bg:#f8f6f2;
+  --bg-card:#ffffff;
+  --bg-header:rgba(248,246,242,0.88);
+  --bg-input:#ffffff;
+  --text:#1a1816;
+  --text-secondary:#6b665f;
+  --text-muted:#9a958e;
+  --border:rgba(0,0,0,0.07);
+  --tag-bg:rgba(0,0,0,0.04);
+  --modal-bg:rgba(255,255,255,0.95);
+  --accent:#a68932;
+  --accent-hover:#c8a55c;
+  --accent-light:rgba(166,137,50,0.08);
+  --star:#a68932;
+}
+body{background:var(--bg);color:var(--text)}
+
+/* ===== HIDE EMOJI ICONS ===== */
+.h-icon{display:none}
+.house-icon{display:none}
+
+/* ===== VIEWS SYSTEM ===== */
+.view{
+  position:absolute;top:0;left:0;width:100%;min-height:100vh;
+  opacity:0;pointer-events:none;transform:translateY(20px);
+  transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);
+  z-index:0;
+}
+.view.active{
+  position:relative;opacity:1;pointer-events:auto;transform:translateY(0);z-index:1;
+  background:var(--bg);
+}
+
+/* ===== LANDING PAGE ===== */
+.landing{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  overflow:hidden;
+  padding:2rem;
+  text-align:center;
+}
+.landing.active{position:relative}
+.landing .landing-theme-toggle{
+  position:absolute;top:1.2rem;right:1.2rem;z-index:10;
+  background:none;border:1px solid var(--border);color:var(--text-muted);
+  width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;transition:all var(--transition);
+}
+.landing .landing-theme-toggle:hover{border-color:rgba(200,165,92,0.4);color:var(--accent)}
+.landing::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,165,92,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(200,165,92,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 20%, rgba(200,165,92,0.03) 0%, transparent 50%);
+  pointer-events:none;
+}
+.landing::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+}
+.landing-logo{margin-bottom:3rem;animation:fadeInDown .8s cubic-bezier(.16,1,.3,1);position:relative;z-index:1}
+.landing-logo h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,8vw,5rem);
+  font-weight:700;
+  color:var(--text);
+  letter-spacing:0.12em;
+  text-shadow:none;
+  margin-bottom:0.5rem;
+}
+.landing-logo p{
+  font-family:'Inter',sans-serif;
+  font-size:0.85rem;
+  letter-spacing:0.35em;
+  color:rgba(200,165,92,0.7);
+  font-weight:300;
+  text-transform:uppercase;
+  margin-top:0.5rem;
+}
+.landing-buttons{
+  display:flex;flex-direction:column;gap:1.2rem;width:100%;max-width:400px;
+  position:relative;z-index:1;
+}
+.landing-buttons::before{
+  content:'';
+  display:block;
+  width:60px;
+  height:1px;
+  background:linear-gradient(90deg, transparent, var(--accent), transparent);
+  margin:0 auto 2rem;
+}
+.landing-btn{
+  display:flex;
+  padding:1.1rem 2rem;
+  border:1px solid rgba(200,165,92,0.3);
+  border-radius:8px;
+  background:rgba(200,165,92,0.06);
+  color:var(--accent);
+  font-size:1rem;
+  font-weight:500;
+  font-family:'Inter',sans-serif;
+  cursor:pointer;
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  text-decoration:none;
+  letter-spacing:0.06em;
+  box-shadow:none;
+  position:relative;
+}
+.landing-btn:hover{
+  background:rgba(200,165,92,0.12);
+  border-color:rgba(200,165,92,0.6);
+  color:#dbb96e;
+  transform:translateY(-1px);
+  box-shadow:0 4px 30px rgba(200,165,92,0.12);
+}
+.landing-btn{flex-direction:column;align-items:center;gap:.15rem}
+.landing-btn-icon{font-size:1.2rem}
+.landing-btn-text{font-size:1rem;font-weight:600}
+.landing-btn-phone{font-size:.78rem;color:var(--text-muted);font-weight:400}
+.landing-btn:active{transform:translateY(0)}
+.landing-subtitle{
+  font-size:.82rem;color:var(--text-muted);letter-spacing:.08em;
+  margin-bottom:1.5rem;position:relative;z-index:1;text-transform:uppercase;
+}
+.landing-social{
+  margin-top:2.5rem;display:flex;gap:1rem;position:relative;z-index:1;
+}
+.social-link{
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(200,165,92,0.25);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);transition:all var(--transition);
+  text-decoration:none;
+}
+.social-link:hover{
+  color:var(--accent);border-color:rgba(200,165,92,0.5);
+  background:rgba(200,165,92,0.08);transform:translateY(-2px);
+}
+
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== STICKY HEADER ===== */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg-header);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);padding:.7rem 1.2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+  transition:background .3s;
+}
+.header-logo{
+  font-family:'Inter',sans-serif;
+  font-size:1.15rem;font-weight:700;color:var(--accent);letter-spacing:.06em;
+  display:flex;align-items:center;gap:.4rem;white-space:nowrap;
+}
+.header-right{display:flex;align-items:center;gap:.6rem}
+.btn-change-addr{
+  background:none;border:1px solid rgba(200,165,92,0.25);color:var(--accent);
+  padding:.4rem .9rem;border-radius:4px;cursor:pointer;font-size:.82rem;
+  font-weight:500;font-family:'Inter',sans-serif;
+  transition:all var(--transition);white-space:nowrap;letter-spacing:.02em;
+}
+.btn-change-addr:hover{background:rgba(200,165,92,0.1);border-color:rgba(200,165,92,0.5);color:var(--accent-hover)}
+.theme-toggle{
+  background:none;border:1px solid var(--border);color:var(--text-muted);
+  width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;
+  display:flex;align-items:center;justify-content:center;transition:all var(--transition);
+}
+.theme-toggle:hover{border-color:rgba(200,165,92,0.4);color:var(--accent)}
+
+/* ===== CATEGORY NAV ===== */
+.cat-nav{
+  position:sticky;top:56px;z-index:90;background:var(--bg-header);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.cat-nav::-webkit-scrollbar{display:none}
+.cat-nav-inner{display:flex;gap:.3rem;padding:.5rem 1rem}
+.cat-tab{
+  padding:0.6rem 1.2rem;
+  border:none;
+  border-radius:0;
+  background:none;
+  color:var(--text-muted);
+  font-size:0.82rem;
+  font-weight:500;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all 0.3s;
+  border-bottom:2px solid transparent;
+  font-family:'Inter',sans-serif;
+}
+.cat-tab:hover{color:var(--accent)}
+.cat-tab.active{
+  color:var(--accent);
+  border-bottom-color:var(--accent);
+  background:none;
+}
+
+/* ===== SEARCH & FILTERS ===== */
+.search-filters{padding:1rem 1.2rem;max-width:1200px;margin:0 auto}
+.search-bar{
+  display:flex;align-items:center;gap:.6rem;background:var(--bg-input);
+  border:1px solid var(--border);border-radius:var(--radius);padding:.55rem 1rem;
+  margin-bottom:.8rem;transition:border-color var(--transition);
+}
+.search-bar:focus-within{border-color:rgba(200,165,92,0.4)}
+.search-bar svg{flex-shrink:0;color:var(--text-muted)}
+.search-bar input{
+  flex:1;background:none;border:none;outline:none;font-size:.95rem;
+  color:var(--text);font-family:'Inter',sans-serif;
+}
+.search-bar input::placeholder{color:var(--text-muted)}
+.search-clear{
+  background:none;border:none;color:var(--text-muted);cursor:pointer;
+  font-size:1.1rem;padding:0 .2rem;transition:color var(--transition);display:none;
+  line-height:1;
+}
+.search-clear.show{display:block}
+.search-clear:hover{color:var(--accent)}
+.filter-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.filter-tag{
+  padding:.35rem .85rem;border-radius:4px;border:1px solid var(--border);
+  background:none;color:var(--text-secondary);font-size:.8rem;
+  font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:all var(--transition);
+}
+.filter-tag:hover{border-color:rgba(200,165,92,0.4);color:var(--accent)}
+.filter-tag.active{background:var(--accent-light);color:var(--accent);border-color:rgba(200,165,92,0.3)}
+
+/* ===== MENU CONTENT ===== */
+.menu-content{max-width:1200px;margin:0 auto;padding:0 1.2rem 2rem}
+.menu-section{margin-bottom:2.5rem}
+.menu-section h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:600;
+  margin-bottom:1.5rem;
+  padding-top:2rem;
+  color:var(--text);
+  letter-spacing:0.02em;
+  border-bottom:none;
+  padding-bottom:0;
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+}
+.menu-section h2::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, var(--border), transparent);
+  margin-left:1rem;
+}
+.menu-section[id]{scroll-margin-top:120px}
+
+/* Card grid */
+.card-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:768px){.card-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1025px){.card-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Food card */
+.food-card{
+  background:var(--bg-card);border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--border);cursor:pointer;
+  transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
+  opacity:1;transform:translateY(0);
+}
+.food-card.fade-in{opacity:0;transform:translateY(30px)}
+.food-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
+.food-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(200,165,92,0.2);
+  box-shadow:0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(200,165,92,0.1);
+}
+.food-card-img{
+  width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--bg-input);
+  display:block;transition:transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.food-card:hover .food-card-img{transform:scale(1.03)}
+.food-card-img-placeholder{
+  width:100%;aspect-ratio:16/10;background:var(--bg-input);
+  display:flex;align-items:center;justify-content:center;
+  font-size:3rem;color:var(--text-muted);
+}
+.food-card-body{padding:1.2rem}
+.food-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.3rem}
+.food-card-name{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;flex:1;margin-right:.5rem;color:var(--text)}
+.food-card-rating{
+  display:flex;align-items:center;gap:.2rem;font-size:.85rem;font-weight:600;
+  color:var(--star);white-space:nowrap;
+}
+.food-card-desc{font-size:.82rem;color:var(--text-secondary);margin-bottom:.6rem;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.food-card-bottom{display:flex;justify-content:space-between;align-items:center}
+.food-card-weight{font-size:.8rem;color:var(--text-muted)}
+.food-card-price{font-family:'Inter',sans-serif;font-size:1.1rem;font-weight:700;color:var(--accent)}
+.food-card-tags{display:flex;gap:.3rem;margin-top:.4rem}
+.food-card-tag{font-size:.7rem;padding:.15rem .5rem;border-radius:4px;font-weight:600}
+.food-card-tag.spicy{background:rgba(220,50,50,.12);color:#e55}
+.food-card-tag.veg{background:rgba(50,180,50,.12);color:#4c4}
+
+/* Shawarma text-based card */
+.shawarma-card{
+  background:var(--bg-card);border-radius:var(--radius);padding:1.2rem;
+  border:1px solid var(--border);transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
+  cursor:pointer;opacity:1;transform:translateY(0);
+}
+.shawarma-card.fade-in{opacity:0;transform:translateY(30px)}
+.shawarma-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s}
+.shawarma-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(200,165,92,0.2);
+  box-shadow:0 8px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(200,165,92,0.1);
+}
+.shawarma-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.25rem}
+.shawarma-card-name{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;color:var(--text)}
+.shawarma-card-sub{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-bottom:.3rem}
+.shawarma-card-desc{font-size:.82rem;color:var(--text-secondary);margin-bottom:.5rem;line-height:1.4}
+.shawarma-card-bottom{display:flex;justify-content:space-between;align-items:center}
+
+/* Shawarma previews */
+.shawarma-previews{display:flex;gap:.8rem;margin-bottom:1.2rem;overflow-x:auto;padding:.2rem 0}
+.shawarma-previews img{
+  height:120px;border-radius:var(--radius);object-fit:cover;cursor:pointer;
+  border:2px solid transparent;transition:border-color var(--transition);flex-shrink:0;
+}
+.shawarma-previews img:hover{border-color:rgba(200,165,92,0.5)}
+
+/* Shawarma grid */
+.shawarma-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.shawarma-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1025px){.shawarma-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Addons section */
+.addons-section{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center}
+.addons-col{flex:1;min-width:200px;max-width:320px}
+.addons-col h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin-bottom:.6rem;color:var(--accent);letter-spacing:.01em}
+.addon-row{
+  display:flex;justify-content:space-between;padding:.4rem 0;
+  border-bottom:1px dashed var(--border);font-size:.9rem;color:var(--text-secondary);
+}
+.addon-row span:last-child{font-weight:700;color:var(--accent);white-space:nowrap}
+
+/* Drinks section */
+.drinks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin-bottom:1.5rem}
+.drink-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:.8rem 1rem;transition:transform var(--transition),border-color var(--transition),box-shadow var(--transition);
+  opacity:1;transform:translateY(0);
+  backdrop-filter:blur(4px);
+}
+.drink-card.fade-in{opacity:0;transform:translateY(20px)}
+.drink-card.visible{opacity:1;transform:translateY(0);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),border-color .3s,box-shadow .3s}
+.drink-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(200,165,92,0.15);
+  box-shadow:0 4px 16px rgba(0,0,0,0.2);
+}
+.drink-name{font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;margin-bottom:.2rem;color:var(--text)}
+.drink-price{color:var(--accent);font-weight:700;font-size:.9rem}
+.drink-variants{font-size:.78rem;color:var(--text-muted)}
+
+/* ===== REVIEWS ===== */
+.reviews-section{max-width:1200px;margin:0 auto;padding:0 1.2rem 2rem}
+.reviews-section h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:600;margin-bottom:1.5rem;padding-top:2rem;
+  color:var(--text);
+  border-bottom:none;padding-bottom:0;
+  display:flex;align-items:center;gap:0.5rem;
+  letter-spacing:0.02em;
+  scroll-margin-top:120px;
+}
+.reviews-section h2::after{
+  content:'';
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, var(--border), transparent);
+  margin-left:1rem;
+}
+.reviews-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.reviews-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1025px){.reviews-grid{grid-template-columns:repeat(3,1fr)}}
+.review-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:1.2rem;opacity:1;transform:translateY(0);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1);
+  position:relative;
+}
+.review-card.fade-in{opacity:0;transform:translateY(30px)}
+.review-card::before{
+  content:'\201C';
+  position:absolute;
+  top:.6rem;right:1rem;
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  color:rgba(200,165,92,0.1);
+  line-height:1;
+  pointer-events:none;
+}
+.review-card.visible{opacity:1;transform:translateY(0)}
+.review-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem}
+.review-author{font-family:'Inter',sans-serif;font-weight:600;font-size:.95rem;color:var(--text)}
+.review-date{font-size:.78rem;color:var(--text-muted)}
+.review-stars{color:var(--star);font-size:.9rem;margin-bottom:.5rem;letter-spacing:1px}
+.review-text{font-size:.88rem;color:var(--text-secondary);line-height:1.6;font-style:italic}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:var(--bg-card);border-top:1px solid var(--border);padding:2.5rem 1.2rem;
+  margin-top:2rem;
+}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.footer-inner{grid-template-columns:repeat(3,1fr)}}
+.footer-block h3{font-family:'Inter',sans-serif;font-size:.9rem;font-weight:600;color:var(--accent);margin-bottom:.6rem;letter-spacing:.04em;text-transform:uppercase}
+.footer-block p,.footer-block a{font-size:.88rem;color:var(--text-secondary);line-height:1.7}
+.footer-block a{text-decoration:none;transition:color var(--transition)}
+.footer-block a:hover{color:var(--accent)}
+.footer-schedule-row{display:flex;justify-content:space-between;max-width:220px;font-size:.88rem;color:var(--text-secondary)}
+.footer-map{
+  width:100%;height:200px;border-radius:var(--radius);background:var(--bg-input);
+  border:1px solid var(--border);overflow:hidden;position:relative;
+}
+.footer-map iframe{
+  width:100%;height:100%;border:0;border-radius:var(--radius);
+  filter:saturate(0.8) contrast(1.05);
+}
+[data-theme="dark"] .footer-map iframe{
+  filter:invert(0.92) hue-rotate(180deg) saturate(0.6) contrast(1.1);
+}
+.footer-copy{text-align:center;margin-top:1.5rem;font-size:.8rem;color:var(--text-muted);
+  padding-top:1rem;border-top:1px solid var(--border);letter-spacing:.02em}
+
+/* ===== BACK TO TOP ===== */
+.back-top{
+  position:fixed;bottom:2rem;right:2rem;z-index:200;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(200,165,92,0.3);
+  background:var(--bg-card);color:var(--accent);font-size:1.1rem;
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+  opacity:0;transform:translateY(20px);pointer-events:none;
+  transition:all var(--transition);display:flex;align-items:center;justify-content:center;
+}
+.back-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-top:hover{
+  border-color:rgba(200,165,92,0.6);
+  background:rgba(200,165,92,0.08);
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(200,165,92,0.15);
+}
+
+/* ===== MODAL ===== */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;background:var(--modal-bg);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1);
+  padding:1rem;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal-wrapper{
+  position:relative;max-width:600px;width:100%;
+}
+.modal-content{
+  max-height:90vh;overflow-y:auto;
+  background:var(--bg-card);border-radius:var(--radius);
+  border:1px solid var(--border);
+  box-shadow:0 16px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(200,165,92,0.05);
+  transform:scale(.92);
+  transition:transform .3s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.open .modal-content{transform:scale(1)}
+.modal-img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:var(--radius) var(--radius) 0 0}
+.modal-body{padding:1.5rem}
+.modal-name{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.3rem;color:var(--text)}
+.modal-rating{color:var(--star);font-size:.9rem;margin-bottom:.5rem}
+.modal-desc{font-size:.92rem;color:var(--text-secondary);line-height:1.6;margin-bottom:.8rem}
+.modal-info{display:flex;justify-content:space-between;align-items:center}
+.modal-weight{color:var(--text-muted);font-size:.9rem}
+.modal-price{font-family:'Inter',sans-serif;font-size:1.3rem;font-weight:700;color:var(--accent)}
+.modal-close{
+  position:absolute;top:.8rem;right:.8rem;z-index:10;width:40px;height:40px;
+  border-radius:50%;border:1px solid rgba(255,255,255,0.1);
+  background:rgba(0,0,0,.5);color:rgba(255,255,255,.7);
+  font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all var(--transition);
+  backdrop-filter:blur(8px);
+}
+.modal-close:hover{background:rgba(0,0,0,.7);color:#fff;border-color:rgba(255,255,255,0.2)}
+.modal-nav{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:10;
+  width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(0,0,0,.4);color:rgba(255,255,255,.7);font-size:1.2rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all var(--transition);
+  backdrop-filter:blur(8px);
+}
+.modal-nav:hover{background:rgba(0,0,0,.6);color:#fff;border-color:rgba(255,255,255,0.2)}
+.modal-nav.prev{left:-22px}
+.modal-nav.next{right:-22px}
+@media(max-width:700px){
+  .modal-nav.prev{left:.5rem}
+  .modal-nav.next{right:.5rem}
+}
+.modal-sizes{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.6rem}
+.modal-size-badge{
+  font-size:.85rem;padding:.3rem .7rem;border-radius:4px;
+  background:var(--accent-light);color:var(--accent);font-weight:600;
+  border:1px solid rgba(200,165,92,0.15);
+}
+
+/* ===== NO RESULTS ===== */
+.no-results{
+  text-align:center;padding:3rem 1rem;color:var(--text-muted);font-size:1.1rem;
+}
+.no-results span{font-size:2.5rem;display:block;margin-bottom:.5rem}
+
+/* ===== LOCATION BADGE ===== */
+.location-badge{
+  text-align:center;padding:.6rem;font-size:.85rem;color:var(--text-muted);
+  border-bottom:1px solid var(--border);background:var(--bg-card);
+  letter-spacing:.02em;
+}
+.location-badge strong{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ===== LANDING VIEW ===== -->
+<div id="view-landing" class="view active landing">
+  <button class="landing-theme-toggle" onclick="toggleTheme()" aria-label="Тема"><span class="theme-icon"></span></button>
+  <div class="landing-logo">
+    <span class="house-icon">&#127968;</span>
+    <h1>СИТИ СНЭК</h1>
+    <p>БУРГЕРЫ &bull; ШАУРМА &bull; ТАКОС</p>
+  </div>
+  <div class="landing-subtitle">Выберите ближайший адрес</div>
+  <div class="landing-buttons">
+    <button class="landing-btn" onclick="navigateTo('chernyshevskogo')">
+      <span class="landing-btn-icon">&#128205;</span>
+      <span class="landing-btn-text">ул. Чернышевского 167</span>
+      <span class="landing-btn-phone">+7-938-693-79-39</span>
+    </button>
+    <button class="landing-btn" onclick="navigateTo('kirova')">
+      <span class="landing-btn-icon">&#128205;</span>
+      <span class="landing-btn-text">ул. Кирова 2/2</span>
+      <span class="landing-btn-phone">+7-938-079-23-22</span>
+    </button>
+  </div>
+  <div class="landing-social">
+    <a href="https://wa.me/79386937939" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- ===== CHERNYSHEVSKOGO VIEW ===== -->
+<div id="view-chernyshevskogo" class="view">
+  <header class="site-header">
+    <div class="header-logo"><span class="h-icon">&#127968;</span> СИТИ СНЭК</div>
+    <div class="header-right">
+      <button class="btn-change-addr" onclick="navigateTo('landing')">&#8592; Сменить адрес</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему"><span class="theme-icon"></span></button>
+    </div>
+  </header>
+  <div class="location-badge">&#128205; <strong>ул. Чернышевского 167</strong></div>
+  <nav class="cat-nav" id="cat-nav-ch"><div class="cat-nav-inner" id="cat-tabs-ch"></div></nav>
+  <div class="search-filters">
+    <div class="search-bar">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-ch" placeholder="Поиск по меню..." oninput="filterMenu('ch')">
+      <button class="search-clear" id="search-clear-ch" onclick="clearSearch('ch')">&times;</button>
+    </div>
+    <div class="filter-tags" id="filters-ch">
+      <button class="filter-tag active" data-filter="all" onclick="setFilter('ch','all',this)">Все</button>
+      <button class="filter-tag" data-filter="spicy" onclick="setFilter('ch','spicy',this)">&#127798; Острое</button>
+      <button class="filter-tag" data-filter="veg" onclick="setFilter('ch','veg',this)">&#129388; Вегетарианское</button>
+      <button class="filter-tag" data-filter="under200" onclick="setFilter('ch','under200',this)">До 200&#8381;</button>
+      <button class="filter-tag" data-filter="priceAsc" onclick="setFilter('ch','priceAsc',this)">Цена&#8593;</button>
+      <button class="filter-tag" data-filter="priceDesc" onclick="setFilter('ch','priceDesc',this)">Цена&#8595;</button>
+    </div>
+  </div>
+  <main class="menu-content" id="menu-ch"></main>
+  <section class="reviews-section" id="reviews-section-ch">
+    <h2 id="sec-ch-reviews">&#11088; Отзывы</h2>
+    <div class="reviews-grid" id="reviews-ch"></div>
+  </section>
+  <footer class="site-footer" id="footer-ch"></footer>
+  <button class="back-top" id="btt-ch" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">&#8593;</button>
+</div>
+
+<!-- ===== KIROVA VIEW ===== -->
+<div id="view-kirova" class="view">
+  <header class="site-header">
+    <div class="header-logo"><span class="h-icon">&#127968;</span> СИТИ СНЭК</div>
+    <div class="header-right">
+      <button class="btn-change-addr" onclick="navigateTo('landing')">&#8592; Сменить адрес</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Переключить тему"><span class="theme-icon"></span></button>
+    </div>
+  </header>
+  <div class="location-badge">&#128205; <strong>ул. Кирова 2/2</strong></div>
+  <nav class="cat-nav" id="cat-nav-ki"><div class="cat-nav-inner" id="cat-tabs-ki"></div></nav>
+  <div class="search-filters">
+    <div class="search-bar">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="search-ki" placeholder="Поиск по меню..." oninput="filterMenu('ki')">
+      <button class="search-clear" id="search-clear-ki" onclick="clearSearch('ki')">&times;</button>
+    </div>
+    <div class="filter-tags" id="filters-ki">
+      <button class="filter-tag active" data-filter="all" onclick="setFilter('ki','all',this)">Все</button>
+      <button class="filter-tag" data-filter="spicy" onclick="setFilter('ki','spicy',this)">&#127798; Острое</button>
+      <button class="filter-tag" data-filter="veg" onclick="setFilter('ki','veg',this)">&#129388; Вегетарианское</button>
+      <button class="filter-tag" data-filter="under200" onclick="setFilter('ki','under200',this)">До 200&#8381;</button>
+      <button class="filter-tag" data-filter="priceAsc" onclick="setFilter('ki','priceAsc',this)">Цена&#8593;</button>
+      <button class="filter-tag" data-filter="priceDesc" onclick="setFilter('ki','priceDesc',this)">Цена&#8595;</button>
+    </div>
+  </div>
+  <main class="menu-content" id="menu-ki"></main>
+  <section class="reviews-section" id="reviews-section-ki">
+    <h2 id="sec-ki-reviews">&#11088; Отзывы</h2>
+    <div class="reviews-grid" id="reviews-ki"></div>
+  </section>
+  <footer class="site-footer" id="footer-ki"></footer>
+  <button class="back-top" id="btt-ki" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">&#8593;</button>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-wrapper">
+    <button class="modal-close" onclick="closeModal()">&#10005;</button>
+    <button class="modal-nav prev" onclick="modalNav(-1)">&#10094;</button>
+    <button class="modal-nav next" onclick="modalNav(1)">&#10095;</button>
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const MENU_DATA = {
+  burgers: {
+    title: '\u0411\u0443\u0440\u0433\u0435\u0440\u044B',
+    icon: '\uD83C\uDF54',
+    locations: ['ch','ki'],
+    items: [
+      {name:'\u0421\u0438\u0442\u0438 \u0411\u0443\u0440\u0433\u0435\u0440',price:315,weight:'425\u0433',rating:4.8,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u041B\u0438\u0441\u0442\u044C\u044F \u0441\u0430\u043B\u0430\u0442\u0430, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0420\u0435\u043F\u0447\u0430\u0442\u044B\u0439 \u043B\u0443\u043A, \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0433\u043E\u0432\u044F\u0436\u044C\u044F, \u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0438\u0439 \u0444\u0440\u0438, \u0421\u044B\u0440',
+       img:'img/burger-city.jpg',tags:[]},
+      {name:'\u0426\u0435\u0437\u0430\u0440\u044C \u0411\u0443\u0440\u0433\u0435\u0440',price:265,weight:'410\u0433',rating:4.6,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441 \u0442\u043E\u043C\u0430\u0442, \u0413\u043E\u0440\u0447\u0438\u0447\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041C\u0430\u0440\u0438\u043D\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041B\u0438\u0441\u0442 \u0441\u0430\u043B\u0430\u0442\u0430, \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u043A\u0443\u0440\u0438\u043D\u0430\u044F, \u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434',
+       img:'img/burger-caesar.jpg',tags:[]},
+      {name:'\u0428\u0435\u0444 \u0411\u0443\u0440\u0433\u0435\u0440',price:265,weight:'410\u0433',rating:4.7,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0413\u043E\u0440\u0447\u0438\u0447\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u041B\u0438\u0441\u0442\u044C\u044F \u0441\u0430\u043B\u0430\u0442\u0430, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041C\u0430\u0440\u0438\u043D\u043E\u0432\u0430\u043D\u043D\u044B\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0433\u043E\u0432\u044F\u0436\u044C\u044F, \u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434',
+       img:'img/burger-chef.jpg',tags:[]}
+    ]
+  },
+  hotdogs: {
+    title:'\u0425\u043E\u0442-\u0414\u043E\u0433\u0438',
+    icon:'\uD83C\uDF2D',
+    locations:['ch','ki'],
+    items:[
+      {name:'\u0427\u0438\u0437 \u0414\u043E\u0433',price:150,priceLabel:'150\u20BD / 200\u20BD',weight:'210\u0433 / 340\u0433',rating:4.5,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0421\u0430\u0440\u0434\u0435\u043B\u044C\u043A\u0430 \u0433\u043E\u0432\u044F\u0436\u044C\u044F, \u041F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0413\u043E\u0440\u0447\u0438\u0447\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434',
+       img:'img/hotdog-cheese.jpg',tags:[],sizes:[{label:'\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439',price:150,weight:'210\u0433'},{label:'\u0411\u043E\u043B\u044C\u0448\u043E\u0439',price:200,weight:'340\u0433'}]},
+      {name:'\u0427\u0438\u043B\u0438 \u0414\u043E\u0433',price:150,priceLabel:'150\u20BD / 200\u20BD',weight:'210\u0433 / 345\u0433',rating:4.4,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0430\u0440\u0434\u0435\u043B\u044C\u043A\u0438 \u0433\u043E\u0432\u044F\u0436\u0438\u0439, \u041B\u0443\u043A \u0440\u0435\u043F\u0447\u0430\u0442\u044B\u0439, \u041E\u0441\u0442\u0440\u044B\u0439 \u0441\u043E\u0443\u0441, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',
+       img:'img/hotdog-chili.jpg',tags:['spicy'],sizes:[{label:'\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439',price:150,weight:'210\u0433'},{label:'\u0411\u043E\u043B\u044C\u0448\u043E\u0439',price:200,weight:'345\u0433'}]}
+    ]
+  },
+  shawarma: {
+    title:'\u0428\u0430\u0443\u0440\u043C\u0430',
+    icon:'\uD83C\uDF2F',
+    locations:['ch','ki'],
+    type:'shawarma',
+    previewImages:['img/shawarma-1.jpg','img/shawarma-2.jpg','img/shawarma-3.jpg'],
+    items:[
+      {name:'\u041A\u0438\u043D\u0433',price:265,weight:'360\u0433',rating:4.9,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
+      {name:'\u041F\u0430\u043F\u0430',price:345,weight:'510\u0433',rating:4.8,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
+      {name:'\u0421\u0430\u0431\u043E\u0440\u0431\u0443\u043B\u0438',price:275,weight:'390\u0433',rating:4.7,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0414\u0443\u0448\u0438\u0441\u0442\u0430\u044F \u0437\u0435\u043B\u0435\u043D\u044C, \u041B\u0443\u043A \u0440\u0435\u043F\u0447\u0430\u0442\u044B\u0439, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0413\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0438\u0439 \u043E\u0441\u0442\u0440\u044B\u0439 \u0441\u043E\u0443\u0441',
+       sub:'\u043E\u0441\u0442\u0440\u0430\u044F \u0433\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0430\u044F \u0448\u0430\u0443\u0440\u043C\u0430',tags:['spicy']},
+      {name:'\u0414\u0436\u0443\u043D\u0438\u043E\u0440',price:220,weight:'280\u0433',rating:4.5,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]},
+      {name:'\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0430\u044F',price:165,weight:'245\u0433',rating:4.3,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:['veg']},
+      {name:'\u0411\u0438\u0444\u043E\u043D\u0430\u0442\u043E\u0440',price:265,weight:'350\u0433',rating:4.6,
+       desc:'\u041B\u0430\u0432\u0430\u0448, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u0421\u043E\u0447\u043D\u0430\u044F \u043A\u0430\u043F\u0443\u0441\u0442\u0430, \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0433\u043E\u0432\u044F\u0436\u044C\u044F, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0441\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',tags:[]}
+    ]
+  },
+  giro: {
+    title_ch:'\u0413\u0438\u0440\u043E & \u0422\u0430\u043A\u043E\u0441',
+    title_ki:'\u0413\u0438\u0440\u043E & \u0422\u0430\u043A\u043E\u0441 \u0417\u0430\u043A\u0443\u0441\u043A\u0438',
+    icon:'\uD83C\uDF2E',
+    locations:['ch','ki'],
+    items:[
+      {name:'\u0413\u0438\u0440\u043E \u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0438\u0439',price:165,weight:'265\u0433',rating:4.3,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041A\u0430\u043F\u0443\u0441\u0442\u0430, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0421\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',
+       img:'img/giro-veg.jpg',tags:['veg']},
+      {name:'\u0413\u0438\u0440\u043E \u041A\u043B\u0430\u0431',price:265,weight:'325\u0433',rating:4.7,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F \u0431\u0443\u043B\u043E\u0447\u043A\u0430, \u0421\u0432\u0435\u0436\u0438\u0435 \u043F\u043E\u043C\u0438\u0434\u043E\u0440\u044B, \u0421\u0432\u0435\u0436\u0438\u0435 \u043E\u0433\u0443\u0440\u0446\u044B, \u041C\u044F\u0441\u043E \u043A\u0443\u0440\u0438\u043D\u043E\u0435, \u0424\u0438\u0440\u043C\u0435\u043D\u043D\u044B\u0439 \u0421\u043E\u0443\u0441, \u0422\u043E\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u043E\u0443\u0441',
+       img:'img/giro-club.jpg',tags:[]},
+      {name:'\u0422\u0430\u043A\u043E\u0441 \u0441 \u0413\u043E\u0432\u044F\u0434\u0438\u043D\u043E\u0439',price:355,priceLabel:'355\u20BD / 570\u20BD',weight:'420\u0433 / 700\u0433',rating:4.8,
+       desc:'\u0422\u043E\u0440\u0442\u0438\u043B\u044C\u044F, \u041C\u043E\u0446\u0430\u0440\u0435\u043B\u043B\u0430, \u0424\u0440\u0438, \u0421\u043E\u0443\u0441 \u0442\u0430\u043A\u043E\u0441, \u0413\u043E\u0432\u044F\u0436\u044C\u0438 \u043A\u043E\u0442\u043B\u0435\u0442\u044B',
+       img:'img/tacos-beef.jpg',tags:[],
+       sizes:[{label:'\u0421\u0440\u0435\u0434\u043D\u0438\u0439',price:355,weight:'420\u0433'},{label:'\u0411\u043E\u043B\u044C\u0448\u043E\u0439',price:570,weight:'700\u0433'}]},
+      {name:'\u0422\u0430\u043A\u043E\u0441 \u0441 \u0421\u043E\u0441\u0438\u0441\u043A\u043E\u0439',price:310,priceLabel:'310\u20BD / 550\u20BD',weight:'400\u0433 / 670\u0433',rating:4.5,
+       desc:'\u0422\u043E\u0440\u0442\u0438\u043B\u044C\u044F, \u041C\u043E\u0446\u0430\u0440\u0435\u043B\u043B\u0430, \u0424\u0440\u0438, \u0421\u043E\u0443\u0441 \u0442\u0430\u043A\u043E\u0441, \u0416\u0430\u0440\u0435\u043D\u043D\u044B\u0435 \u0441\u043E\u0441\u0438\u0441\u043A\u0438',
+       img:'img/tacos-sausage.jpg',tags:[],
+       sizes:[{label:'\u0421\u0440\u0435\u0434\u043D\u0438\u0439',price:310,weight:'400\u0433'},{label:'\u0411\u043E\u043B\u044C\u0448\u043E\u0439',price:550,weight:'670\u0433'}]},
+      {name:'\u0422\u0430\u043A\u043E\u0441 \u0441 \u041A\u0443\u0440\u0438\u0446\u0435\u0439',price:330,priceLabel:'330\u20BD / 550\u20BD',weight:'370\u0433 / 550\u0433',rating:4.6,
+       desc:'\u0422\u043E\u0440\u0442\u0438\u043B\u044C\u044F, \u041C\u043E\u0446\u0430\u0440\u0435\u043B\u043B\u0430, \u0424\u0440\u0438, \u0421\u043E\u0443\u0441 \u0442\u0430\u043A\u043E\u0441, \u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E',
+       img:'img/tacos-wrap.jpg',tags:[],
+       sizes:[{label:'\u0421\u0440\u0435\u0434\u043D\u0438\u0439',price:330,weight:'370\u0433'},{label:'\u0411\u043E\u043B\u044C\u0448\u043E\u0439',price:550,weight:'550\u0433'}]}
+    ]
+  },
+  snacks: {
+    title:'\u0417\u0430\u043A\u0443\u0441\u043A\u0438',
+    icon:'\uD83C\uDF5F',
+    locations:['ki'],
+    items:[
+      {name:'\u041D\u0430\u0433\u0433\u0435\u0442\u0441\u044B',price:125,weight:'',rating:4.4,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0438\u0435 \u043A\u0443\u0440\u0438\u043D\u044B\u0435 \u043D\u0430\u0433\u0433\u0435\u0442\u0441\u044B',img:'img/nuggets.jpg',tags:[]},
+      {name:'\u041A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C \u0424\u0440\u0438',price:110,weight:'',rating:4.2,
+       desc:'\u0425\u0440\u0443\u0441\u0442\u044F\u0449\u0438\u0439 \u0437\u043E\u043B\u043E\u0442\u0438\u0441\u0442\u044B\u0439 \u043A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C \u0444\u0440\u0438',img:'img/fries.jpg',tags:[]}
+    ]
+  },
+  addons: {
+    title:'\u0414\u043E\u0431\u0430\u0432\u043A\u0438',
+    icon:'\u2795',
+    locations:['ch','ki'],
+    type:'addons',
+    left:[
+      {name:'\u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u041A\u0443\u0440\u0438\u043D\u0430\u044F',price:90},
+      {name:'\u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0413\u043E\u0432\u044F\u0436\u0430\u044F',price:100},
+      {name:'\u041A\u0443\u0440\u0438\u043D\u043E\u0435 \u043C\u044F\u0441\u043E',price:80},
+      {name:'\u0421\u043E\u0441\u0438\u0441\u043A\u0430',price:50},
+      {name:'\u0421\u0430\u0440\u0434\u0435\u043B\u044C\u043A\u0430',price:80},
+      {name:'\u0421\u044B\u0440 \u0425\u043E\u0445\u043B\u0430\u043D\u0434',price:25},
+      {name:'\u0421\u044B\u0440 \u041C\u043E\u0446\u0430\u0440\u0435\u043B\u043B\u0430',price:70},
+      {name:'\u0425\u0430\u043B\u0430\u043F\u0435\u043D\u044C\u043E',price:25}
+    ],
+    right:[
+      {name:'\u041E\u0433\u0443\u0440\u0435\u0446',price:25},
+      {name:'\u041F\u043E\u043C\u0438\u0434\u043E\u0440',price:35},
+      {name:'\u0416\u0430\u0440\u0435\u043D\u043E\u0435 \u042F\u0439\u0446\u043E',price:30},
+      {name:'\u0417\u0435\u043B\u0435\u043D\u044C',price:20},
+      {name:'\u041A\u0430\u043F\u0443\u0441\u0442\u0430',price:35},
+      {name:'\u041B\u0443\u043A \u041A\u0440\u0430\u0441\u043D\u044B\u0439',price:20},
+      {name:'\u041A\u0430\u0440\u0442\u043E\u0444\u0435\u043B\u044C \u0424\u0440\u0438',price:35}
+    ],
+    sauces:[
+      {name:'\u0413\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0438\u0439 \u0421\u043E\u0443\u0441',price:35},
+      {name:'\u0413\u043E\u0440\u0447\u0438\u0446\u0430',price:35},
+      {name:'\u0421\u043E\u0443\u0441 \u0422\u0430\u043A\u043E\u0441',price:35},
+      {name:'\u0421\u043E\u0443\u0441 \u041A\u0440\u0430\u0441\u043D\u044B\u0439',price:25},
+      {name:'\u0421\u043E\u0443\u0441 \u0413\u0440\u0438\u043B\u044C',price:35},
+      {name:'\u0421\u043E\u0443\u0441 Heinz',price:50},
+      {name:'\u0421\u043E\u0443\u0441 \u0427\u0438\u043B\u0438',price:20},
+      {name:'\u0421\u043E\u0443\u0441 \u0411\u0435\u043B\u044B\u0439',price:35}
+    ]
+  }
+};
+
+const DRINKS_DATA = {
+  ch: {
+    title: '\u0425\u043E\u043B\u043E\u0434\u043D\u044B\u0435 \u041D\u0430\u043F\u0438\u0442\u043A\u0438',
+    icon: '\uD83E\uDD64',
+    items: [
+      {name:'\u0411\u0430\u0431\u0443\u0433\u0435\u043D\u0442',price:'60\u20BD'},
+      {name:'\u0424\u0440\u044D\u0448',price:'75\u20BD'},
+      {name:'\u041A\u043E\u043B\u0430',price:'110\u20BD',variants:'0.3\u043B: 110\u20BD | 0.5\u043B: 120\u20BD | 1\u043B: 140\u20BD'},
+      {name:'\u0413\u0440\u0443\u0448\u0430',price:'85\u20BD'},
+      {name:'\u0421\u043E\u043A \u0414\u043E\u0431\u0440\u044B\u0439',price:'60\u20BD',variants:'0.2\u043B: 60\u20BD | 1\u043B: 180\u20BD'},
+      {name:'\u0410\u0434\u0440\u0435\u043D\u0430\u043B\u0438\u043D',price:'150\u20BD'},
+      {name:'\u041F\u0430\u043B\u043F\u0438',price:'120\u20BD'},
+      {name:'\u0413\u043E\u0440\u0438\u043B\u043B\u0430',price:'160\u20BD'},
+      {name:'\u0420\u0438\u0447 \u0414\u043E\u043B\u044C\u0447\u0435',price:'120\u20BD'},
+      {name:'\u0424\u043B\u044D\u0448',price:'80\u20BD'}
+    ]
+  },
+  ki: {
+    sections: [
+      {
+        title:'\u0413\u043E\u0440\u044F\u0447\u0438\u0435 \u041D\u0430\u043F\u0438\u0442\u043A\u0438',
+        icon:'\u2615',
+        items:[
+          {name:'\u041A\u0430\u043F\u0443\u0447\u0438\u043D\u043E (\u0440\u0430\u0441\u0442\u0432\u043E\u0440\u0438\u043C\u044B\u0439)',price:'110\u20BD'},
+          {name:'\u041A\u0430\u043F\u0443\u0447\u0438\u043D\u043E (\u0437\u0435\u0440\u043D\u043E\u0432\u043E\u0439)',price:'135\u20BD'},
+          {name:'\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u043E (\u0440\u0430\u0441\u0442\u0432\u043E\u0440\u0438\u043C\u044B\u0439)',price:'90\u20BD'},
+          {name:'\u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u043E (\u0437\u0435\u0440\u043D\u043E\u0432\u043E\u0439)',price:'130\u20BD'},
+          {name:'\u0424\u043B\u044D\u0442 \u0423\u0430\u0439\u0442',price:'155\u20BD'},
+          {name:'\u041B\u0430\u0442\u0442\u0435',price:'145\u20BD'},
+          {name:'\u042D\u0441\u043F\u0440\u0435\u0441\u0441\u043E',price:'110\u20BD'},
+          {name:'\u0414\u0432\u043E\u0439\u043D\u043E\u0439 \u042D\u0441\u043F\u0440\u0435\u0441\u0441\u043E',price:'130\u20BD'},
+          {name:'\u041A\u043E\u0444\u0435 \u0441 \u041C\u043E\u043B\u043E\u043A\u043E\u043C (\u0440\u0430\u0441\u0442\u0432\u043E\u0440\u0438\u043C\u044B\u0439)',price:'110\u20BD'}
+        ]
+      },
+      {
+        title:'\u0425\u043E\u043B\u043E\u0434\u043D\u044B\u0435 \u041D\u0430\u043F\u0438\u0442\u043A\u0438',
+        icon:'\uD83E\uDD64',
+        items:[
+          {name:'\u0427\u0430\u0439 (\u0447\u0435\u0440\u043D\u044B\u0439/\u0437\u0435\u043B\u0435\u043D\u044B\u0439)',price:'50\u20BD'},
+          {name:'\u0411\u0430\u0431\u0443\u0433\u0435\u043D\u0442',price:'60\u20BD'},
+          {name:'\u041B\u0438\u043C\u043E\u043D\u0430\u0434',price:'80\u20BD'},
+          {name:'\u041A\u043E\u043B\u0430',price:'110\u20BD',variants:'0.3\u043B: 110\u20BD | 0.5\u043B: 120\u20BD | 1\u043B: 140\u20BD'},
+          {name:'\u041F\u0430\u043B\u043F\u0438',price:'120\u20BD'},
+          {name:'\u0420\u0438\u0447 \u0414\u043E\u043B\u044C\u0447\u0435',price:'120\u20BD'},
+          {name:'\u0421\u043E\u043A \u0414\u043E\u0431\u0440\u044B\u0439 (0.2)',price:'60\u20BD'},
+          {name:'\u0410\u0434\u0440\u0435\u043D\u0430\u043B\u0438\u043D',price:'160\u20BD'},
+          {name:'\u0424\u043B\u044D\u0448',price:'80\u20BD'}
+        ]
+      }
+    ]
+  }
+};
+
+const REVIEWS_DATA = {
+  ch: [
+    {author:'\u0410\u0445\u043C\u0435\u0434 \u041A.',date:'2 \u0434\u043D\u044F \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u041B\u0443\u0447\u0448\u0430\u044F \u0448\u0430\u0443\u0440\u043C\u0430 \u0432 \u0433\u043E\u0440\u043E\u0434\u0435! \u0417\u0430\u043A\u0430\u0437\u044B\u0432\u0430\u044E \u041A\u0438\u043D\u0433 \u0443\u0436\u0435 \u0442\u0440\u0435\u0442\u0438\u0439 \u0440\u0430\u0437 \u2014 \u0432\u0441\u0435\u0433\u0434\u0430 \u0441\u0432\u0435\u0436\u0430\u044F, \u0441\u043E\u0447\u043D\u0430\u044F, \u0441 \u0431\u043E\u043B\u044C\u0448\u0438\u043C \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E\u043C \u043C\u044F\u0441\u0430. \u0421\u043E\u0443\u0441 \u043F\u0440\u043E\u0441\u0442\u043E \u043E\u0433\u043E\u043D\u044C!'},
+    {author:'\u041C\u0430\u0440\u0438\u043D\u0430 \u0421.',date:'5 \u0434\u043D\u0435\u0439 \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u0421\u0438\u0442\u0438 \u0411\u0443\u0440\u0433\u0435\u0440 \u2014 \u043C\u043E\u0439 \u0444\u0430\u0432\u043E\u0440\u0438\u0442. \u041A\u043E\u0442\u043B\u0435\u0442\u0430 \u0441\u043E\u0447\u043D\u0430\u044F, \u0431\u0443\u043B\u043E\u0447\u043A\u0430 \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F. \u041F\u043E\u0440\u0446\u0438\u0438 \u0431\u043E\u043B\u044C\u0448\u0438\u0435, \u0446\u0435\u043D\u044B \u0430\u0434\u0435\u043A\u0432\u0430\u0442\u043D\u044B\u0435. \u0420\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u0443\u044E \u0432\u0441\u0435\u043C!'},
+    {author:'\u0420\u0443\u0441\u043B\u0430\u043D \u041C.',date:'1 \u043D\u0435\u0434\u0435\u043B\u044E \u043D\u0430\u0437\u0430\u0434',stars:4,text:'\u0422\u0430\u043A\u043E\u0441 \u0441 \u0433\u043E\u0432\u044F\u0434\u0438\u043D\u043E\u0439 \u2014 \u044D\u0442\u043E \u0447\u0442\u043E-\u0442\u043E! \u041C\u043E\u0446\u0430\u0440\u0435\u043B\u043B\u0430 \u0442\u044F\u043D\u0435\u0442\u0441\u044F, \u0444\u0440\u0438 \u0432\u043D\u0443\u0442\u0440\u0438 \u0445\u0440\u0443\u0441\u0442\u0438\u0442. \u0411\u043E\u043B\u044C\u0448\u0430\u044F \u043F\u043E\u0440\u0446\u0438\u044F, \u043D\u0430\u0435\u0434\u0430\u0435\u0448\u044C\u0441\u044F \u043D\u0430 \u0432\u0435\u0441\u044C \u0434\u0435\u043D\u044C. \u041C\u0438\u043D\u0443\u0441 \u2014 \u0438\u043D\u043E\u0433\u0434\u0430 \u0434\u043E\u043B\u0433\u043E \u0436\u0434\u0430\u0442\u044C.'},
+    {author:'\u0414\u0438\u0430\u043D\u0430 \u0410.',date:'2 \u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0430\u044F \u0448\u0430\u0443\u0440\u043C\u0430 \u0438 \u0413\u0438\u0440\u043E \u0412\u0435\u0433\u0435\u0442\u0430\u0440\u0438\u0430\u043D\u0441\u043A\u0438\u0439 \u2014 \u043D\u0430\u043A\u043E\u043D\u0435\u0446-\u0442\u043E \u0435\u0441\u0442\u044C \u0432\u044B\u0431\u043E\u0440 \u0434\u043B\u044F \u0442\u0435\u0445, \u043A\u0442\u043E \u043D\u0435 \u0435\u0441\u0442 \u043C\u044F\u0441\u043E! \u0412\u043A\u0443\u0441\u043D\u043E, \u0441\u0432\u0435\u0436\u043E, \u0441\u044B\u0442\u043D\u043E. \u0421\u043F\u0430\u0441\u0438\u0431\u043E!'},
+    {author:'\u0418\u0441\u043B\u0430\u043C \u0425.',date:'3 \u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u0421\u0430\u0431\u043E\u0440\u0431\u0443\u043B\u0438 \u2014 \u043E\u0441\u0442\u0440\u0430\u044F \u043A\u0430\u043A \u043D\u0430\u0434\u043E! \u0413\u0440\u0443\u0437\u0438\u043D\u0441\u043A\u0438\u0439 \u0441\u043E\u0443\u0441 \u0434\u0435\u043B\u0430\u0435\u0442 \u0441\u0432\u043E\u0451 \u0434\u0435\u043B\u043E. \u0411\u0435\u0440\u0443 \u043A\u0430\u0436\u0434\u0443\u044E \u043F\u044F\u0442\u043D\u0438\u0446\u0443. \u0420\u0435\u0431\u044F\u0442\u0430, \u0432\u044B \u043B\u0443\u0447\u0448\u0438\u0435!'}
+  ],
+  ki: [
+    {author:'\u0422\u0438\u043C\u0443\u0440 \u0411.',date:'1 \u0434\u0435\u043D\u044C \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u041D\u0430\u0433\u0433\u0435\u0442\u0441\u044B \u0438 \u0444\u0440\u0438 \u2014 \u0438\u0434\u0435\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u043A\u0443\u0441! \u0411\u044B\u0441\u0442\u0440\u043E, \u0432\u043A\u0443\u0441\u043D\u043E, \u043F\u043E-\u0434\u043E\u043C\u0430\u0448\u043D\u0435\u043C\u0443. \u041A\u043E\u0444\u0435 \u0442\u043E\u0436\u0435 \u043F\u043E\u0440\u0430\u0434\u043E\u0432\u0430\u043B.'},
+    {author:'\u0410\u043C\u0438\u043D\u0430 \u0413.',date:'3 \u0434\u043D\u044F \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u0428\u0435\u0444 \u0411\u0443\u0440\u0433\u0435\u0440 \u0437\u0434\u0435\u0441\u044C \u043B\u0443\u0447\u0448\u0438\u0439! \u0411\u0443\u043B\u043E\u0447\u043A\u0430 \u0441 \u043A\u0443\u043D\u0436\u0443\u0442\u043E\u043C, \u043C\u044F\u0441\u043E \u0441\u043E\u0447\u043D\u043E\u0435. \u041F\u043B\u044E\u0441 \u043C\u043E\u0436\u043D\u043E \u0432\u0437\u044F\u0442\u044C \u043B\u0430\u0442\u0442\u0435 \u2014 \u0443\u0434\u043E\u0431\u043D\u043E!'},
+    {author:'\u041C\u0430\u0433\u043E\u043C\u0435\u0434 \u0410.',date:'1 \u043D\u0435\u0434\u0435\u043B\u044E \u043D\u0430\u0437\u0430\u0434',stars:4,text:'\u0425\u043E\u0436\u0443 \u0441\u044E\u0434\u0430 \u043A\u0430\u0436\u0434\u044B\u0439 \u0434\u0435\u043D\u044C \u043D\u0430 \u043E\u0431\u0435\u0434. \u0428\u0430\u0443\u0440\u043C\u0430 \u041F\u0430\u043F\u0430 \u2014 \u043E\u0433\u0440\u043E\u043C\u043D\u0430\u044F \u043F\u043E\u0440\u0446\u0438\u044F. \u0415\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0439 \u043C\u0438\u043D\u0443\u0441 \u2014 \u0432 \u043F\u044F\u0442\u043D\u0438\u0446\u0443 \u0431\u044B\u0432\u0430\u0435\u0442 \u043E\u0447\u0435\u0440\u0435\u0434\u044C.'},
+    {author:'\u041B\u0435\u0439\u043B\u0430 \u041A.',date:'2 \u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u041A\u043E\u0444\u0435 \u043D\u0430 \u0437\u0451\u0440\u043D\u0430\u0445 \u043E\u0447\u0435\u043D\u044C \u0434\u043E\u0441\u0442\u043E\u0439\u043D\u044B\u0439 \u0434\u043B\u044F \u0444\u0430\u0441\u0442\u0444\u0443\u0434\u0430! \u0410\u043C\u0435\u0440\u0438\u043A\u0430\u043D\u043E \u0437\u0435\u0440\u043D\u043E\u0432\u043E\u0439 \u2014 \u043C\u043E\u0439 \u0443\u0442\u0440\u0435\u043D\u043D\u0438\u0439 \u0440\u0438\u0442\u0443\u0430\u043B. \u0418 \u0447\u0438\u0437\u043A\u0435\u0439\u043A... \u043E\u0439, \u0442\u043E \u0435\u0441\u0442\u044C \u0447\u0438\u0437 \u0434\u043E\u0433!'},
+    {author:'\u0420\u0430\u0441\u0443\u043B \u0414.',date:'3 \u043D\u0435\u0434\u0435\u043B\u0438 \u043D\u0430\u0437\u0430\u0434',stars:5,text:'\u0422\u0430\u043A\u043E\u0441 \u0441 \u043A\u0443\u0440\u0438\u0446\u0435\u0439 \u2014 \u0431\u043E\u043C\u0431\u0430! \u0422\u043E\u0440\u0442\u0438\u043B\u044C\u044F \u0445\u0440\u0443\u0441\u0442\u044F\u0449\u0430\u044F, \u043D\u0430\u0447\u0438\u043D\u043A\u0438 \u043C\u043D\u043E\u0433\u043E. \u0420\u0435\u043A\u043E\u043C\u0435\u043D\u0434\u0443\u044E \u0441 \u0441\u043E\u0443\u0441\u043E\u043C \u0433\u0440\u0438\u043B\u044C.'}
+  ]
+};
+
+const CONTACTS = {
+  ch: {
+    address:'\u0443\u043B. \u0427\u0435\u0440\u043D\u044B\u0448\u0435\u0432\u0441\u043A\u043E\u0433\u043E 167',
+    phone:'+7-938-693-79-39',
+    phoneTel:'+79386937939',
+    mapSrc:'https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE+167&z=16&lang=ru_RU',
+    mapLink:'https://yandex.ru/maps/?text=%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE+167',
+    routeLink:'https://yandex.ru/maps/?rtext=~%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%A7%D0%B5%D1%80%D0%BD%D1%8B%D1%88%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE+167&rtt=auto'
+  },
+  ki: {
+    address:'\u0443\u043B. \u041A\u0438\u0440\u043E\u0432\u0430 2/2',
+    phone:'+7-938-079-23-22',
+    phoneTel:'+79380792322',
+    mapSrc:'https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%9A%D0%B8%D1%80%D0%BE%D0%B2%D0%B0+2%2F2&z=16&lang=ru_RU',
+    mapLink:'https://yandex.ru/maps/?text=%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%9A%D0%B8%D1%80%D0%BE%D0%B2%D0%B0+2%2F2',
+    routeLink:'https://yandex.ru/maps/?rtext=~%D0%9D%D0%B0%D0%BB%D1%8C%D1%87%D0%B8%D0%BA%2C+%D1%83%D0%BB.+%D0%9A%D0%B8%D1%80%D0%BE%D0%B2%D0%B0+2%2F2&rtt=auto'
+  }
+};
+
+// ===== STATE =====
+let currentView = 'landing';
+let currentFilter = {ch:'all', ki:'all'};
+let currentSearch = {ch:'', ki:''};
+let modalItems = [];
+let modalIndex = 0;
+
+// ===== NAVIGATION =====
+function navigateTo(view) {
+  window.location.hash = view;
+}
+
+function setView(view) {
+  const map = {landing:'view-landing', chernyshevskogo:'view-chernyshevskogo', kirova:'view-kirova'};
+  const id = map[view];
+  if (!id) return;
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+  var el = document.getElementById(id);
+  if (el) {
+    el.classList.add('active');
+    window.scrollTo({top:0, behavior:'auto'});
+    currentView = view;
+    // Run observer after view transition completes
+    setTimeout(observeCards, 200);
+    // Fallback: force show all cards if observer fails
+    setTimeout(function(){
+      el.querySelectorAll('.food-card, .shawarma-card, .drink-card, .review-card').forEach(function(c){
+        c.classList.add('visible');
+      });
+    }, 600);
+  }
+}
+
+window.addEventListener('hashchange', function() {
+  var hash = window.location.hash.replace('#','') || 'landing';
+  setView(hash);
+});
+
+// ===== THEME =====
+function toggleTheme() {
+  var html = document.documentElement;
+  var next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('cs-theme', next);
+  updateThemeIcons();
+}
+
+function updateThemeIcons() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.querySelectorAll('.theme-icon').forEach(function(el){
+    el.textContent = isDark ? '\u263E' : '\u2600';
+  });
+}
+
+// ===== RENDER =====
+function renderMenu(loc) {
+  var container = document.getElementById('menu-' + loc);
+  var tabsContainer = document.getElementById('cat-tabs-' + loc);
+  var html = '';
+  var tabs = [];
+  var sectionOrder = ['burgers','hotdogs','shawarma','giro','snacks','addons'];
+
+  sectionOrder.forEach(function(key) {
+    var section = MENU_DATA[key];
+    if (!section) return;
+    if (!section.locations.includes(loc)) return;
+
+    var sectionId = 'sec-' + loc + '-' + key;
+    var title = section.title || '';
+    if (key === 'giro') title = loc === 'ki' ? section.title_ki : section.title_ch;
+    tabs.push({id: sectionId, label: section.icon + ' ' + title});
+
+    html += '<section class="menu-section" id="' + sectionId + '">';
+    html += '<h2>' + section.icon + ' ' + title + '</h2>';
+
+    if (section.type === 'addons') {
+      html += renderAddons(section);
+    } else if (section.type === 'shawarma') {
+      html += renderShawarma(section, loc);
+    } else {
+      html += '<div class="card-grid" data-section="' + key + '">';
+      section.items.forEach(function(item, i) {
+        html += renderFoodCard(item, key, i, loc);
+      });
+      html += '</div>';
+    }
+    html += '</section>';
+  });
+
+  // Drinks
+  var drinkSecId = 'sec-' + loc + '-drinks';
+  if (loc === 'ch') {
+    var d = DRINKS_DATA.ch;
+    tabs.push({id: drinkSecId, label: d.icon + ' ' + d.title});
+    html += '<section class="menu-section" id="' + drinkSecId + '">';
+    html += '<h2>' + d.icon + ' ' + d.title + '</h2>';
+    html += '<div class="drinks-grid">';
+    d.items.forEach(function(item){ html += renderDrinkCard(item); });
+    html += '</div></section>';
+  } else {
+    tabs.push({id: drinkSecId, label: '\u2615 \u041D\u0430\u043F\u0438\u0442\u043A\u0438'});
+    html += '<section class="menu-section" id="' + drinkSecId + '">';
+    DRINKS_DATA.ki.sections.forEach(function(sec) {
+      html += '<h2>' + sec.icon + ' ' + sec.title + '</h2>';
+      html += '<div class="drinks-grid">';
+      sec.items.forEach(function(item){ html += renderDrinkCard(item); });
+      html += '</div>';
+    });
+    html += '</section>';
+  }
+
+  // Reviews tab
+  tabs.push({id: 'sec-' + loc + '-reviews', label: '\u2B50 \u041E\u0442\u0437\u044B\u0432\u044B'});
+
+  container.innerHTML = html;
+
+  // Tabs
+  tabsContainer.innerHTML = tabs.map(function(t){
+    return '<button class="cat-tab" data-target="' + t.id + '" onclick="scrollToSection(\'' + t.id + '\')">' + t.label + '</button>';
+  }).join('');
+
+  renderReviews(loc);
+  renderFooter(loc);
+}
+
+function renderFoodCard(item, section, index, loc) {
+  var priceDisplay = item.priceLabel || (item.price + '\u20BD');
+  var tagsHtml = (item.tags||[]).map(function(t){
+    var cls = t === 'spicy' ? 'spicy' : 'veg';
+    var label = t === 'spicy' ? '\uD83C\uDF36 \u041E\u0441\u0442\u0440\u043E\u0435' : '\uD83E\uDD6C \u0412\u0435\u0433';
+    return '<span class="food-card-tag ' + cls + '">' + label + '</span>';
+  }).join('');
+
+  return '<div class="food-card" data-name="' + escapeAttr(item.name) + '" data-price="' + item.price + '" data-tags="' + (item.tags||[]).join(',') + '" data-section="' + section + '" data-idx="' + index + '" data-loc="' + loc + '">' +
+    '<img class="food-card-img" src="' + (item.img||'') + '" alt="' + escapeAttr(item.name) + '" loading="lazy" onerror="this.outerHTML=\'<div class=food-card-img-placeholder>\uD83C\uDF7D</div>\'">' +
+    '<div class="food-card-body">' +
+      '<div class="food-card-top"><span class="food-card-name">' + item.name + '</span><span class="food-card-rating">\u2605 ' + item.rating + '</span></div>' +
+      '<p class="food-card-desc">' + item.desc + '</p>' +
+      (tagsHtml ? '<div class="food-card-tags">' + tagsHtml + '</div>' : '') +
+      '<div class="food-card-bottom"><span class="food-card-weight">' + (item.weight||'') + '</span><span class="food-card-price">' + priceDisplay + '</span></div>' +
+    '</div></div>';
+}
+
+function renderShawarma(section, loc) {
+  var html = '<div class="shawarma-previews">';
+  section.previewImages.forEach(function(src){
+    html += '<img src="' + src + '" alt="\u0428\u0430\u0443\u0440\u043C\u0430" loading="lazy" onerror="this.style.display=\'none\'">';
+  });
+  html += '</div>';
+  html += '<div class="shawarma-grid" data-section="shawarma">';
+  section.items.forEach(function(item, i){
+    var tagsHtml = (item.tags||[]).map(function(t){
+      var cls = t === 'spicy' ? 'spicy' : 'veg';
+      var label = t === 'spicy' ? '\uD83C\uDF36 \u041E\u0441\u0442\u0440\u043E\u0435' : '\uD83E\uDD6C \u0412\u0435\u0433';
+      return '<span class="food-card-tag ' + cls + '">' + label + '</span>';
+    }).join('');
+
+    html += '<div class="shawarma-card" data-name="' + escapeAttr(item.name) + '" data-price="' + item.price + '" data-tags="' + (item.tags||[]).join(',') + '" data-section="shawarma" data-idx="' + i + '" data-loc="' + loc + '">' +
+      '<div class="shawarma-card-top"><span class="shawarma-card-name">' + item.name + '</span><span class="food-card-rating">\u2605 ' + item.rating + '</span></div>' +
+      (item.sub ? '<p class="shawarma-card-sub">' + item.sub + '</p>' : '') +
+      '<p class="shawarma-card-desc">' + item.desc + '</p>' +
+      (tagsHtml ? '<div class="food-card-tags">' + tagsHtml + '</div>' : '') +
+      '<div class="shawarma-card-bottom"><span class="food-card-weight">' + item.weight + '</span><span class="food-card-price">' + item.price + '\u20BD</span></div>' +
+    '</div>';
+  });
+  html += '</div>';
+  return html;
+}
+
+function renderAddons(section) {
+  var html = '<div class="addons-section">';
+  html += '<div class="addons-col"><h3>\u041C\u044F\u0441\u043E & \u0421\u044B\u0440</h3>';
+  section.left.forEach(function(a){ html += '<div class="addon-row"><span>' + a.name + '</span><span>' + a.price + '\u20BD</span></div>'; });
+  html += '</div>';
+  html += '<div class="addons-col"><h3>\u041E\u0432\u043E\u0449\u0438 & \u041F\u0440\u043E\u0447\u0435\u0435</h3>';
+  section.right.forEach(function(a){ html += '<div class="addon-row"><span>' + a.name + '</span><span>' + a.price + '\u20BD</span></div>'; });
+  html += '</div>';
+  html += '<div class="addons-col"><h3>\u0421\u043E\u0443\u0441\u044B</h3>';
+  section.sauces.forEach(function(a){ html += '<div class="addon-row"><span>' + a.name + '</span><span>' + a.price + '\u20BD</span></div>'; });
+  html += '</div></div>';
+  return html;
+}
+
+function renderDrinkCard(item) {
+  return '<div class="drink-card">' +
+    '<div class="drink-name">' + item.name + '</div>' +
+    '<div class="drink-price">' + item.price + '</div>' +
+    (item.variants ? '<div class="drink-variants">' + item.variants + '</div>' : '') +
+  '</div>';
+}
+
+function renderReviews(loc) {
+  var container = document.getElementById('reviews-' + loc);
+  container.innerHTML = REVIEWS_DATA[loc].map(function(r){
+    return '<div class="review-card">' +
+      '<div class="review-header"><span class="review-author">' + r.author + '</span><span class="review-date">' + r.date + '</span></div>' +
+      '<div class="review-stars">' + '\u2605'.repeat(r.stars) + '\u2606'.repeat(5 - r.stars) + '</div>' +
+      '<p class="review-text">\u00AB' + r.text + '\u00BB</p>' +
+    '</div>';
+  }).join('');
+}
+
+function renderFooter(loc) {
+  var c = CONTACTS[loc];
+  document.getElementById('footer-' + loc).innerHTML =
+    '<div class="footer-inner">' +
+      '<div class="footer-block">' +
+        '<h3>\uD83D\uDCCD \u0410\u0434\u0440\u0435\u0441</h3>' +
+        '<p><a href="' + c.mapLink + '" target="_blank" rel="noopener">' + c.address + '</a></p>' +
+        '<p><a href="tel:' + c.phoneTel + '">' + c.phone + '</a></p>' +
+        '<p style="margin-top:.5rem"><a href="' + c.routeLink + '" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;color:var(--accent);font-size:.82rem;font-weight:500">\u27A4 \u041F\u043E\u0441\u0442\u0440\u043E\u0438\u0442\u044C \u043C\u0430\u0440\u0448\u0440\u0443\u0442</a></p>' +
+      '</div>' +
+      '<div class="footer-block">' +
+        '<h3>\uD83D\uDD50 \u0413\u0440\u0430\u0444\u0438\u043A \u0440\u0430\u0431\u043E\u0442\u044B</h3>' +
+        '<div class="footer-schedule-row"><span>\u041F\u043D \u2014 \u0427\u0442</span><span>10:00 \u2014 23:00</span></div>' +
+        '<div class="footer-schedule-row"><span>\u041F\u0442 \u2014 \u0421\u0431</span><span>10:00 \u2014 00:00</span></div>' +
+        '<div class="footer-schedule-row"><span>\u0412\u0441</span><span>11:00 \u2014 23:00</span></div>' +
+      '</div>' +
+      '<div class="footer-block">' +
+        '<h3>\uD83D\uDDFA \u041D\u0430 \u043A\u0430\u0440\u0442\u0435</h3>' +
+        '<div class="footer-map"><iframe src="' + c.mapSrc + '" allowfullscreen loading="lazy"></iframe></div>' +
+        '<p style="margin-top:.4rem;text-align:center"><a href="' + c.mapLink + '" target="_blank" rel="noopener" style="font-size:.78rem;color:var(--text-muted)">\u041E\u0442\u043A\u0440\u044B\u0442\u044C \u0432 \u042F\u043D\u0434\u0435\u043A\u0441.\u041A\u0430\u0440\u0442\u0430\u0445 \u2197</a></p>' +
+      '</div>' +
+    '</div>' +
+    '<div class="footer-copy">\u00A9 ' + new Date().getFullYear() + ' \u0421\u0418\u0422\u0418 \u0421\u041D\u042D\u041A. \u0412\u0441\u0435 \u043F\u0440\u0430\u0432\u0430 \u0437\u0430\u0449\u0438\u0449\u0435\u043D\u044B.</div>';
+}
+
+// ===== HELPERS =====
+function escapeAttr(s) {
+  return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function escapeHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ===== SEARCH & FILTER =====
+function filterMenu(loc) {
+  currentSearch[loc] = document.getElementById('search-' + loc).value.toLowerCase().trim();
+  var clearBtn = document.getElementById('search-clear-' + loc);
+  if(clearBtn) clearBtn.classList.toggle('show', currentSearch[loc].length > 0);
+  applyFilters(loc);
+}
+
+function clearSearch(loc) {
+  var input = document.getElementById('search-' + loc);
+  input.value = '';
+  input.focus();
+  filterMenu(loc);
+}
+
+function setFilter(loc, filter, btn) {
+  var container = document.getElementById('filters-' + loc);
+  container.querySelectorAll('.filter-tag').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  currentFilter[loc] = filter;
+  applyFilters(loc);
+}
+
+function applyFilters(loc) {
+  var query = currentSearch[loc];
+  var filter = currentFilter[loc];
+  var menu = document.getElementById('menu-' + loc);
+  var cards = menu.querySelectorAll('.food-card, .shawarma-card');
+
+  cards.forEach(function(card) {
+    var name = (card.dataset.name || '').toLowerCase();
+    var price = parseInt(card.dataset.price) || 0;
+    var tags = (card.dataset.tags || '').split(',').filter(Boolean);
+    var show = true;
+
+    if (query && !name.includes(query)) show = false;
+    if (show && filter === 'spicy' && tags.indexOf('spicy') === -1) show = false;
+    if (show && filter === 'veg' && tags.indexOf('veg') === -1) show = false;
+    if (show && filter === 'under200' && price >= 200) show = false;
+
+    card.style.display = show ? '' : 'none';
+  });
+
+  // Price sorting
+  if (filter === 'priceAsc' || filter === 'priceDesc') {
+    menu.querySelectorAll('.card-grid, .shawarma-grid').forEach(function(grid) {
+      var items = Array.from(grid.children).filter(function(c){ return c.style.display !== 'none'; });
+      items.sort(function(a, b) {
+        var pa = parseInt(a.dataset.price) || 0;
+        var pb = parseInt(b.dataset.price) || 0;
+        return filter === 'priceAsc' ? pa - pb : pb - pa;
+      });
+      items.forEach(function(item){ grid.appendChild(item); });
+    });
+  }
+
+  // Hide empty sections
+  menu.querySelectorAll('.menu-section').forEach(function(sec) {
+    if (sec.querySelector('.addons-section')) {
+      if (query) {
+        var hasAddon = false;
+        sec.querySelectorAll('.addon-row').forEach(function(row){
+          var n = row.querySelector('span').textContent.toLowerCase();
+          var show = n.includes(query);
+          row.style.display = show ? '' : 'none';
+          if(show) hasAddon = true;
+        });
+        sec.style.display = hasAddon ? '' : 'none';
+      } else {
+        sec.style.display = '';
+        sec.querySelectorAll('.addon-row').forEach(function(r){r.style.display='';});
+      }
+      return;
+    }
+    if (sec.querySelector('.drinks-grid')) {
+      if (query) {
+        var hasDrink = false;
+        sec.querySelectorAll('.drink-card').forEach(function(dc){
+          var n = dc.querySelector('.drink-name').textContent.toLowerCase();
+          var show = n.includes(query);
+          dc.style.display = show ? '' : 'none';
+          if(show) hasDrink = true;
+        });
+        sec.style.display = hasDrink ? '' : 'none';
+      } else {
+        sec.style.display = '';
+        sec.querySelectorAll('.drink-card').forEach(function(dc){dc.style.display='';});
+      }
+      return;
+    }
+    var visible = sec.querySelectorAll('.food-card:not([style*="display: none"]), .shawarma-card:not([style*="display: none"])');
+    sec.style.display = visible.length === 0 ? 'none' : '';
+  });
+
+  // No results
+  var existing = menu.querySelector('.no-results');
+  if (existing) existing.remove();
+  var allHidden = Array.from(menu.querySelectorAll('.menu-section')).every(function(s){ return s.style.display === 'none'; });
+  if (allHidden && query) {
+    menu.insertAdjacentHTML('beforeend', '<div class="no-results"><span>\uD83D\uDD0D</span>\u041D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E \u043F\u043E \u0437\u0430\u043F\u0440\u043E\u0441\u0443 \u00AB' + escapeHtml(query) + '\u00BB</div>');
+  }
+}
+
+// ===== MODAL =====
+function openModal(sectionKey, index) {
+  var data = MENU_DATA[sectionKey];
+  if (!data || !data.items[index]) return;
+  modalItems = data.items;
+  modalIndex = index;
+  renderModalContent();
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderModalContent() {
+  var item = modalItems[modalIndex];
+  if (!item) return;
+  var mc = document.getElementById('modal-content');
+  var imgSrc = item.img || '';
+  var priceDisplay = item.priceLabel || (item.price + '\u20BD');
+  var tagsHtml = (item.tags||[]).map(function(t){
+    var cls = t === 'spicy' ? 'spicy' : 'veg';
+    var label = t === 'spicy' ? '\uD83C\uDF36 \u041E\u0441\u0442\u0440\u043E\u0435' : '\uD83E\uDD6C \u0412\u0435\u0433';
+    return '<span class="food-card-tag ' + cls + '">' + label + '</span>';
+  }).join('');
+
+  var sizesHtml = '';
+  if (item.sizes) {
+    sizesHtml = '<div class="modal-sizes">';
+    item.sizes.forEach(function(s){
+      sizesHtml += '<span class="modal-size-badge">' + s.label + ': ' + s.price + '\u20BD (' + s.weight + ')</span>';
+    });
+    sizesHtml += '</div>';
+  }
+
+  mc.innerHTML =
+    (imgSrc ? '<img class="modal-img" src="' + imgSrc + '" alt="' + escapeAttr(item.name) + '" onerror="this.style.display=\'none\'">' : '') +
+    '<div class="modal-body">' +
+      '<div class="modal-name">' + item.name + '</div>' +
+      (item.sub ? '<div style="font-size:.85rem;color:var(--text-muted);font-style:italic;margin-bottom:.3rem">' + item.sub + '</div>' : '') +
+      '<div class="modal-rating">\u2605 ' + item.rating + '</div>' +
+      (tagsHtml ? '<div class="food-card-tags" style="margin-bottom:.5rem">' + tagsHtml + '</div>' : '') +
+      '<p class="modal-desc">' + item.desc + '</p>' +
+      sizesHtml +
+      '<div class="modal-info"><span class="modal-weight">' + (item.weight||'') + '</span><span class="modal-price">' + priceDisplay + '</span></div>' +
+    '</div>';
+
+  document.querySelector('.modal-nav.prev').style.display = modalIndex > 0 ? '' : 'none';
+  document.querySelector('.modal-nav.next').style.display = modalIndex < modalItems.length - 1 ? '' : 'none';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function modalNav(dir) {
+  var ni = modalIndex + dir;
+  if (ni >= 0 && ni < modalItems.length) {
+    modalIndex = ni;
+    renderModalContent();
+  }
+}
+
+// Card click delegation
+document.addEventListener('click', function(e) {
+  var card = e.target.closest('.food-card, .shawarma-card');
+  if (!card) return;
+  var section = card.dataset.section;
+  var idx = parseInt(card.dataset.idx);
+  if (section && !isNaN(idx)) {
+    openModal(section, idx);
+  }
+});
+
+// Modal keyboard
+document.addEventListener('keydown', function(e) {
+  if (!document.getElementById('modal').classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') modalNav(-1);
+  if (e.key === 'ArrowRight') modalNav(1);
+});
+
+// Modal swipe
+var touchStartX = 0;
+document.getElementById('modal').addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, {passive:true});
+document.getElementById('modal').addEventListener('touchend', function(e) {
+  var diff = e.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(diff) > 50) modalNav(diff > 0 ? -1 : 1);
+}, {passive:true});
+
+// Close on overlay click
+document.getElementById('modal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ===== SCROLL OBSERVERS =====
+var cardObserver = null;
+function observeCards() {
+  if (cardObserver) cardObserver.disconnect();
+  var activeView = document.querySelector('.view.active');
+  if (!activeView) return;
+  var cards = activeView.querySelectorAll('.food-card, .shawarma-card, .drink-card, .review-card');
+  // Make cards above the fold visible immediately
+  var viewportH = window.innerHeight;
+  cards.forEach(function(card) {
+    var rect = card.getBoundingClientRect();
+    if (rect.top < viewportH + 50) {
+      card.classList.add('visible');
+    }
+  });
+  // Observe remaining cards for scroll animation
+  cardObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.08, rootMargin:'0px 0px -20px 0px'});
+
+  cards.forEach(function(card) {
+    if (!card.classList.contains('visible')) {
+      card.classList.add('fade-in');
+      cardObserver.observe(card);
+    }
+  });
+}
+
+// ===== SCROLL SPY =====
+function setupScrollSpy(loc) {
+  window.addEventListener('scroll', function() {
+    var tabs = document.querySelectorAll('#cat-tabs-' + loc + ' .cat-tab');
+    if (!tabs.length) return;
+    // Only run if this location's view is active
+    var view = document.getElementById(loc === 'ch' ? 'view-chernyshevskogo' : 'view-kirova');
+    if (!view || !view.classList.contains('active')) return;
+
+    var scrollY = window.scrollY + 150;
+    var activeId = '';
+    tabs.forEach(function(tab) {
+      var sec = document.getElementById(tab.dataset.target);
+      if (sec && sec.offsetTop <= scrollY) activeId = sec.id;
+    });
+    tabs.forEach(function(tab) {
+      var isActive = tab.dataset.target === activeId;
+      tab.classList.toggle('active', isActive);
+    });
+    // Auto-scroll tab into view
+    var activeTab = document.querySelector('#cat-tabs-' + loc + ' .cat-tab.active');
+    if (activeTab) {
+      activeTab.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    }
+  }, {passive:true});
+}
+
+function scrollToSection(id) {
+  var el = document.getElementById(id);
+  if (el) {
+    var y = el.getBoundingClientRect().top + window.pageYOffset - 120;
+    window.scrollTo({top: y, behavior: 'smooth'});
+  }
+}
+
+// ===== BACK TO TOP =====
+window.addEventListener('scroll', function() {
+  var show = window.scrollY > 400;
+  document.querySelectorAll('.back-top').forEach(function(btn) {
+    btn.classList.toggle('show', show);
+  });
+}, {passive:true});
+
+// ===== INIT =====
+function init() {
+  var saved = localStorage.getItem('cs-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  updateThemeIcons();
+
+  renderMenu('ch');
+  renderMenu('ki');
+  setupScrollSpy('ch');
+  setupScrollSpy('ki');
+
+  var hash = window.location.hash.replace('#','') || 'landing';
+  setView(hash);
+  setTimeout(observeCards, 250);
+}
+
+// ===== PWA =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+
+<!-- Schema.org JSON-LD for Yandex & Google -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "FastFoodRestaurant",
+    "name": "\u0421\u0438\u0442\u0438 \u0421\u043D\u044D\u043A",
+    "image": "icon-512.png",
+    "servesCuisine": ["\u0411\u0443\u0440\u0433\u0435\u0440\u044B", "\u0428\u0430\u0443\u0440\u043C\u0430", "\u0422\u0430\u043A\u043E\u0441", "\u0413\u0438\u0440\u043E", "\u0425\u043E\u0442-\u0434\u043E\u0433\u0438"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "\u0443\u043B. \u0427\u0435\u0440\u043D\u044B\u0448\u0435\u0432\u0441\u043A\u043E\u0433\u043E 167",
+      "addressCountry": "RU"
+    },
+    "telephone": "+7-938-693-79-39",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "00:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "23:00"}
+    ],
+    "priceRange": "150\u20BD - 570\u20BD",
+    "currenciesAccepted": "RUB",
+    "paymentAccepted": "\u041D\u0430\u043B\u0438\u0447\u043D\u044B\u0435, \u041A\u0430\u0440\u0442\u044B"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FastFoodRestaurant",
+    "name": "\u0421\u0438\u0442\u0438 \u0421\u043D\u044D\u043A",
+    "image": "icon-512.png",
+    "servesCuisine": ["\u0411\u0443\u0440\u0433\u0435\u0440\u044B", "\u0428\u0430\u0443\u0440\u043C\u0430", "\u0422\u0430\u043A\u043E\u0441", "\u0413\u0438\u0440\u043E", "\u0425\u043E\u0442-\u0434\u043E\u0433\u0438"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "\u0443\u043B. \u041A\u0438\u0440\u043E\u0432\u0430 2/2",
+      "addressCountry": "RU"
+    },
+    "telephone": "+7-938-079-23-22",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "00:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "11:00", "closes": "23:00"}
+    ],
+    "priceRange": "150\u20BD - 570\u20BD",
+    "currenciesAccepted": "RUB",
+    "paymentAccepted": "\u041D\u0430\u043B\u0438\u0447\u043D\u044B\u0435, \u041A\u0430\u0440\u0442\u044B"
+  }
+]
+</script>
+
+<!--
+  Yandex.Metrika — раскомментируй и замени COUNTER_ID на свой ID счётчика:
+  <script type="text/javascript">
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+  ym(COUNTER_ID, "init", {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/COUNTER_ID" style="position:absolute;left:-9999px;" alt=""/></div></noscript>
+-->
+
+</body>
+</html>
