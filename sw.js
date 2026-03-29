@@ -1,4 +1,4 @@
-const CACHE_NAME = 'city-snack-v7';
+const CACHE_NAME = 'city-snack-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -11,6 +11,7 @@ const ASSETS = [
   './img/shawarma-1.jpg',
   './img/shawarma-2.jpg',
   './img/shawarma-3.jpg',
+  './img/shawarma-saborbuli.svg',
   './img/giro-veg.jpg',
   './img/giro-club.jpg',
   './img/tacos-wrap.jpg',
